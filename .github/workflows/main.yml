@@ -18,16 +18,18 @@ jobs:
           flutter-version: '3.22.0'
           channel: 'stable'
 
+      # Combined cleaning steps for clarity
+      - name: Clean build files
+        run: |
+          cd simple_live_tv_app
+          flutter clean
+          cd android
+          ./gradlew clean
+        working-directory: ./
+
       - name: Install dependencies
         run: flutter pub get
         working-directory: simple_live_tv_app
-
-      # 新增：清理 Gradle 缓存和构建文件
-      - name: Clean build files
-        run: |
-          ./gradlew clean
-          flutter clean
-        working-directory: simple_live_tv_app/android
 
       - name: Build APK
         run: flutter build apk --debug
