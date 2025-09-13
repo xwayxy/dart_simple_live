@@ -1,4 +1,4 @@
-name: Flutter Build
+name: Simple Build Debug APK
 
 on:
   push:
@@ -18,8 +18,7 @@ jobs:
           flutter-version: '3.22.0'
           channel: 'stable'
 
-      # 新增：清理 Flutter 构建缓存
-      - name: Flutter clean
+      - name: Clean Flutter build
         run: flutter clean
         working-directory: simple_live_tv_app
 
